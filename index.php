@@ -99,7 +99,7 @@ curl_setopt($curl, CURLOPT_URL, $repo_url);
 $response = curl_exec($curl);
 
 if(!status_ok($curl))
-	exit("Could not find repo.");
+	exit("Repository doesn't exist or is private.");
 
 $repo = json_decode($response, true);
 
