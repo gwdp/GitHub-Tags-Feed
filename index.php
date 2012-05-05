@@ -30,8 +30,12 @@ if(!$username || !$repo_name):
 		}
 
 		body {
-			padding-top: 8em;
 			text-align: center;
+		}
+
+		h1 {
+			font-size: 1.6em;
+			line-height: 6;
 		}
 
 		div {
@@ -58,7 +62,9 @@ if(!$username || !$repo_name):
 		}
 	</style>
 </head>
-<body>	
+<body>
+
+<h1>GitHub Tags RSS Feed Generator</h1>
 
 <form method="get" action="<?php echo $_SERVER["PHP_SELF"] ?>">
 	<div>
@@ -72,7 +78,7 @@ if(!$username || !$repo_name):
 	</div>
 
 	<div>
-		<input type="submit" value="Get tag feed" />
+		<input type="submit" value="Get Tag Feed" />
 	</div>
 </form>
 
