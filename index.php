@@ -150,7 +150,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
 		<item>
 		
 			<title><?php echo $tag["tag"] ?></title>
-			<link><?php echo "https://github.com/$username/$repo_name/commit/".$tag["sha"] ?></link>
+			<link><?php echo "https://github.com/$username/$repo_name/zipball/".$tag["tag"] ?></link>
 			<pubDate><?php echo date("r", strtotime($tag["tagger"]["date"])) ?></pubDate>
 			<guid><?php echo "https://github.com/$username/$repo_name/commit/".$tag["sha"] ?></guid>
 			<author><?php echo $tag["tagger"]["email"] ?></author>
