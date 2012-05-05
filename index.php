@@ -98,23 +98,30 @@ curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_URL, $repo_url);
 $response = curl_exec($curl);
 
-if(!status_ok($curl))
+if(!status_ok($curl)) {
+	header("HTTP/1.1 404 Not Found");
 	exit("Repository doesn't exist or is private.");
+}
 
 $repo = json_decode($response, true);
 
 curl_setopt($curl, CURLOPT_URL, $list_url);
 $response = curl_exec($curl);
 
-if(!status_ok($curl))
-	exit("Could not fetch tag list.");
+if(!status_ok($curl)) {
+	header("HTTP/1.1 404 Not Found");
+	exit("No tags for this repository yet.");
+}
 
 $tag_refs = array_reverse(json_decode($response, true));
 
 $tags = array();
 foreach($tag_refs as $tag) {
+	//only match version tags
+	//if(preg_match('~/v\d+(\.\d+)*$~', $tag["ref"])) {
 	curl_setopt($curl, CURLOPT_URL, $tag["object"]["url"]);
 	$tags[] = json_decode(curl_exec($curl), true);
+	//}
 }
 
 curl_close($curl);
