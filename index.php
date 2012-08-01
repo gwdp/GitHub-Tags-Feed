@@ -83,7 +83,7 @@ if(!$username || !$repo_name):
 </form>
 
 <footer>
-	<p>Made by <a href="http://samrayner.com">Sam Rayner</a>. Questions? <a href="mailto:&#115&#97&#109&#64&#115&#97&#109&#114&#97&#121&#110&#101&#114&#46&#99&#111&#109">Get in touch</a>.</p>
+	<p>Made by <a href="http://samrayner.com">Sam Rayner</a>. Questions? <a href="mailto:&#115;&#97;&#109;&#64;&#115;&#97;&#109;&#114;&#97;&#121;&#110;&#101;&#114;&#46;&#99;&#111;&#109;">Get in touch</a>.</p>
 
 	<p>
 		<iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=samrayner&repo=GitHub-Tags-Feed&type=watch" allowtransparency="true" frameborder="0" scrolling="0" width="62px" height="20px"></iframe>
@@ -132,6 +132,15 @@ foreach($tag_refs as $tag) {
 
 curl_close($curl);
 
+function escape(&$var) {
+	$var = htmlspecialchars($var, ENT_NOQUOTES | 16); //ENT_XML1 = 16
+}
+
+escape($repo["name"]);
+escape($repo["description"]);
+escape($username);
+
+
 header("Content-Type: application/xml;");
 echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
 <rss version="2.0">
@@ -149,6 +158,12 @@ echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
 		<?php foreach($tags as $tag): ?>
 		<item>
 		
+			<?php 
+				escape($tag["tag"]);
+				escape($tag["tagger"]["email"]);
+				escape($tag["message"]);
+			?>
+
 			<title><?php echo $tag["tag"] ?></title>
 			<link><?php echo "https://github.com/$username/$repo_name/zipball/".$tag["tag"] ?></link>
 			<pubDate><?php echo date("r", strtotime($tag["tagger"]["date"])) ?></pubDate>
