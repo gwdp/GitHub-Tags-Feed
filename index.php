@@ -119,8 +119,7 @@ escape($repo["name"]);
 escape($repo["description"]);
 escape($username);
 
-header("Content-Type: application/xml;");
-echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
+header("Content-Type: application/xml;"); ?>
  <rss version="2.0"
      xmlns="http://github-tags.herokuapp.com/gitModule"
      xmlns:git="http://github-tags.herokuapp.com/gitModule">
