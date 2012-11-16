@@ -108,18 +108,7 @@ if(!status_ok($curl)) {
 	header("HTTP/1.1 404 Not Found");
 	exit("No tags for this repository yet. ".curl_getinfo($curl, CURLINFO_HTTP_CODE)." - ".response);
 }
-
-$tag_refs = array_reverse(json_decode($response, true));
-
-$tags = array();
-foreach($tag_refs as $tag) {
-	//only match version tags
-	//if(preg_match('~/v\d+(\.\d+)*$~', $tag["ref"])) {
-	curl_setopt($curl, CURLOPT_URL, $tag["object"]["url"]);
-	$tags[] = json_decode(curl_exec($curl), true);
-	//}
-}
-
+$tag_refs = json_decode($response, true);
 curl_close($curl);
 
 function escape(&$var) {
@@ -129,7 +118,6 @@ function escape(&$var) {
 escape($repo["name"]);
 escape($repo["description"]);
 escape($username);
-
 
 header("Content-Type: application/xml;");
 echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
@@ -143,13 +131,13 @@ echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
 		<docs>http://blogs.law.harvard.edu/tech/rss</docs>
 		<pubDate><?php echo date("r", strtotime($repo["pushed_at"])) ?></pubDate>
 		<lastBuildDate><?php echo date("r", strtotime($repo["updated_at"])) ?></lastBuildDate>
-		<?php foreach($tags as $tag): ?>
+		<?php foreach($tag_refs as $tag): ?>
         <item>
 			<title><?php echo $tag["name"] ?></title>
-			<sha><?php echo $tag["sha"] ?></sha>
+			<sha><?php echo $tag["commit"]["sha"] ?></sha>
 			<link_zip><?php echo $tag["zipball_url"] ?></link_zip>
 			<link_tar><?php echo $tag["tarball_url"] ?></link_tar>
-			<link_commit><?php echo $tag["url"] ?></link_commit>
+			<link_commit><?php echo $tag["commit"]["url"] ?></link_commit>
 		</item>
        <?php endforeach ?>
 	</channel>
