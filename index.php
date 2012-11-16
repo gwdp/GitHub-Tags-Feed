@@ -136,10 +136,10 @@ echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
 		<?php foreach($tag_refs as $tag): ?>
         <item>
 			<title><?php echo $tag["name"] ?></title>
-			<git:sha><?php echo $tag["commit"]["sha"] ?></sha>
-			<git:link_zip><?php echo $tag["zipball_url"] ?></link_zip>
-			<git:link_tar><?php echo $tag["tarball_url"] ?></link_tar>
-			<git:link_commit><?php echo $tag["commit"]["url"] ?></link_commit>
+			<git:sha><?php echo $tag["commit"]["sha"] ?></git:sha>
+			<git:link_zip><?php echo $tag["zipball_url"] ?></git:link_zip>
+			<git:link_tar><?php echo $tag["tarball_url"] ?></git:link_tar>
+			<git:link_commit><?php echo $tag["commit"]["url"] ?></git:link_commit>
 		</item>
        <?php endforeach ?>
 	</channel>
