@@ -86,7 +86,7 @@ if(!$username || !$repo_name):
 
 <?php else: ?><?php
 $repo_url = "https://api.github.com/repos/$username/$repo_name";
-$list_url = $repo_url."/git/refs/tags/";
+$list_url = $repo_url."/tags";
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
