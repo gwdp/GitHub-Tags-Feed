@@ -96,7 +96,7 @@ $response = curl_exec($curl);
 
 if(!status_ok($curl)) {
 	header("HTTP/1.1 404 Not Found");
-	exit("Repository doesn't exist or is private. %s - %s",curl_getinfo($curl, CURLINFO_HTTP_CODE),response);
+	exit("Repository doesn't exist or is private. ".curl_getinfo($curl, CURLINFO_HTTP_CODE)." - ".response);
 }
 
 $repo = json_decode($response, true);
@@ -106,7 +106,7 @@ $response = curl_exec($curl);
 
 if(!status_ok($curl)) {
 	header("HTTP/1.1 404 Not Found");
-	exit("No tags for this repository yet. %s - %s",curl_getinfo($curl, CURLINFO_HTTP_CODE),response);
+	exit("No tags for this repository yet. ".curl_getinfo($curl, CURLINFO_HTTP_CODE)." - ".response);
 }
 
 $tag_refs = array_reverse(json_decode($response, true));
