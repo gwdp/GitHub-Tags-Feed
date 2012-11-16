@@ -135,7 +135,6 @@ header("Content-Type: application/xml;");
 echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
 <rss version="2.0">
 	<channel>
-	
 		<title>Changelog for <?php echo $repo["name"] ?></title>
 		<link><?php echo $repo["html_url"] ?></link>
 		<description><?php echo $repo["description"] ?></description>
@@ -144,27 +143,15 @@ echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
 		<docs>http://blogs.law.harvard.edu/tech/rss</docs>
 		<pubDate><?php echo date("r", strtotime($repo["pushed_at"])) ?></pubDate>
 		<lastBuildDate><?php echo date("r", strtotime($repo["updated_at"])) ?></lastBuildDate>
-		
 		<?php foreach($tags as $tag): ?>
-		<item>
-		
-			<?php 
-				escape($tag["tag"]);
-				escape($tag["tagger"]["email"]);
-				escape($tag["message"]);
-			?>
-
-			<title><?php echo $tag["tag"] ?></title>
-			<link><?php echo "https://github.com/$username/$repo_name/zipball/".$tag["tag"] ?></link>
-			<pubDate><?php echo date("r", strtotime($tag["tagger"]["date"])) ?></pubDate>
-			<guid><?php echo "https://github.com/$username/$repo_name/commit/".$tag["sha"] ?></guid>
-			<author><?php echo $tag["tagger"]["email"] ?></author>
-			<description><?php echo $tag["message"] ?></description>
-
+        <item>
+			<title><?php echo $tag["name"] ?></title>
+			<sha><?php echo $tag["sha"] ?></sha>
+			<link_zip><?php echo $tag["zipball_url"] ?></link_zip>
+			<link_tar><?php echo $tag["tarball_url"] ?></link_tar>
+			<link_commit><?php echo $tag["url"] ?></link_commit>
 		</item>
-		<?php endforeach ?>
-		
+       <?php endforeach ?>
 	</channel>
 </rss>
-
 <?php endif ?>
