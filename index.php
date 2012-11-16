@@ -122,8 +122,8 @@ escape($username);
 header("Content-Type: application/xml;");
 echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
  <rss version="2.0"
-     xmlns="/gitModule"
-     xmlns:git="/gitModule">
+     xmlns="http://github-tags.herokuapp.com/gitModule"
+     xmlns:git="http://github-tags.herokuapp.com/gitModule">
 	<channel>
 		<title>Changelog for <?php echo $repo["name"] ?></title>
 		<link><?php echo $repo["html_url"] ?></link>
@@ -137,9 +137,9 @@ echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
         <item>
 			<title><?php echo $tag["name"] ?></title>
 			<git:sha><?php echo $tag["commit"]["sha"] ?></git:sha>
-			<git:link_zip><?php echo $tag["zipball_url"] ?></git:link_zip>
-			<git:link_tar><?php echo $tag["tarball_url"] ?></git:link_tar>
-			<git:link_commit><?php echo $tag["commit"]["url"] ?></git:link_commit>
+			<git:linkZip><?php echo $tag["zipball_url"] ?></git:linkZip>
+			<git:linkTar><?php echo $tag["tarball_url"] ?></git:linkTar>
+			<git:linkCommit><?php echo $tag["commit"]["url"] ?></git:linkCommit>
 		</item>
        <?php endforeach ?>
 	</channel>
