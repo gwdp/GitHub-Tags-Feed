@@ -121,8 +121,7 @@ escape($username);
 
 header("Content-Type: application/xml;"); ?>
  <rss version="2.0"
-     xmlns="http://github-tags.herokuapp.com/gitModule"
-     xmlns:git="http://github-tags.herokuapp.com/gitModule">
+    xmlns:git="http://github-tags.herokuapp.com/gitModule">
 	<channel>
 		<title>Changelog for <?php echo $repo["name"] ?></title>
 		<link><?php echo $repo["html_url"] ?></link>
