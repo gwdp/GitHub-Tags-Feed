@@ -1,4 +1,4 @@
 GitHub Tags RSS Feed Generator
 ==============================
 
-Visit: <http://ghtags.samrayner.com>
+Visit: <http://github-tags.herokuapp.com>
