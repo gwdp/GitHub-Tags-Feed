@@ -83,12 +83,7 @@ if(!$username || !$repo_name):
 </form>
 
 <footer>
-	<p>Made by <a href="http://samrayner.com">Sam Rayner</a>. Questions? <a href="mailto:&#115;&#97;&#109;&#64;&#115;&#97;&#109;&#114;&#97;&#121;&#110;&#101;&#114;&#46;&#99;&#111;&#109;">Get in touch</a>.</p>
 
-	<p>
-		<iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=samrayner&repo=GitHub-Tags-Feed&type=watch" allowtransparency="true" frameborder="0" scrolling="0" width="62px" height="20px"></iframe>
-		<iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=samrayner&repo=GitHub-Tags-Feed&type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="55px" height="20px"></iframe>
-	</p>
 </footer>
 
 </body>
