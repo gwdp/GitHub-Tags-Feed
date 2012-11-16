@@ -135,7 +135,7 @@ header("Content-Type: application/xml;"); ?>
         $count = 0; 
         foreach($tag_refs as $tag): ?>
         <item>
-            <guid><?php echo $count ?></guid>
+            <guid isPermaLink="false"><?php echo $count ?></guid>
 			<title><?php echo $tag["name"] ?></title>
 			<git:sha><?php echo $tag["commit"]["sha"] ?></git:sha>
 			<git:linkZip><?php echo $tag["zipball_url"] ?></git:linkZip>
