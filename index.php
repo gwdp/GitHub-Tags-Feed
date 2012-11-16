@@ -121,7 +121,9 @@ escape($username);
 
 header("Content-Type: application/xml;");
 echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
-<rss version="2.0">
+ <rss version="2.0"
+     xmlns="/gitModule"
+     xmlns:git="/gitModule">
 	<channel>
 		<title>Changelog for <?php echo $repo["name"] ?></title>
 		<link><?php echo $repo["html_url"] ?></link>
@@ -134,10 +136,10 @@ echo '<?xml version="1.0" encoding="utf-8"?>'; ?>
 		<?php foreach($tag_refs as $tag): ?>
         <item>
 			<title><?php echo $tag["name"] ?></title>
-			<sha><?php echo $tag["commit"]["sha"] ?></sha>
-			<link_zip><?php echo $tag["zipball_url"] ?></link_zip>
-			<link_tar><?php echo $tag["tarball_url"] ?></link_tar>
-			<link_commit><?php echo $tag["commit"]["url"] ?></link_commit>
+			<git:sha><?php echo $tag["commit"]["sha"] ?></sha>
+			<git:link_zip><?php echo $tag["zipball_url"] ?></link_zip>
+			<git:link_tar><?php echo $tag["tarball_url"] ?></link_tar>
+			<git:link_commit><?php echo $tag["commit"]["url"] ?></link_commit>
 		</item>
        <?php endforeach ?>
 	</channel>
