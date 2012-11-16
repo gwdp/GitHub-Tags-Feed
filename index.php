@@ -137,6 +137,7 @@ header("Content-Type: application/xml;"); ?>
 			<title><?php echo $tag["name"] ?></title>
             <description><?php echo "Tag: ".$tag["name"] ?></description>
 			<git:sha><?php echo $tag["commit"]["sha"] ?></git:sha>
+			<link><?php echo $tag["zipball_url"] ?></link>
 			<git:linkZip><?php echo $tag["zipball_url"] ?></git:linkZip>
 			<git:linkTar><?php echo $tag["tarball_url"] ?></git:linkTar>
 			<git:linkCommit><?php echo $tag["commit"]["url"] ?></git:linkCommit>
