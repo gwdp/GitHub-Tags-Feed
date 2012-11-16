@@ -131,11 +131,9 @@ header("Content-Type: application/xml;"); ?>
 		<docs>http://blogs.law.harvard.edu/tech/rss</docs>
 		<pubDate><?php echo date("r", strtotime($repo["pushed_at"])) ?></pubDate>
 		<lastBuildDate><?php echo date("r", strtotime($repo["updated_at"])) ?></lastBuildDate>
-		<?php 
-        $count = 0; 
-        foreach($tag_refs as $tag): ?>
+		<?php foreach($tag_refs as $tag): ?>
         <item>
-            <guid isPermaLink="false"><?php echo $count ?></guid>
+            <guid isPermaLink="false"><?php echo $tag["commit"]["sha"] ?></guid>
 			<title><?php echo $tag["name"] ?></title>
 			<git:sha><?php echo $tag["commit"]["sha"] ?></git:sha>
 			<git:linkZip><?php echo $tag["zipball_url"] ?></git:linkZip>
