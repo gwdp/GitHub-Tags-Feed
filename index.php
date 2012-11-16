@@ -135,6 +135,7 @@ header("Content-Type: application/xml;"); ?>
         <item>
             <guid isPermaLink="false"><?php echo $tag["commit"]["sha"] ?></guid>
 			<title><?php echo $tag["name"] ?></title>
+            <description><?php echo "Tag: ".$tag["name"] ?></description>
 			<git:sha><?php echo $tag["commit"]["sha"] ?></git:sha>
 			<git:linkZip><?php echo $tag["zipball_url"] ?></git:linkZip>
 			<git:linkTar><?php echo $tag["tarball_url"] ?></git:linkTar>
