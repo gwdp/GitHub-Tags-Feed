@@ -81,11 +81,6 @@ if(!$username || !$repo_name):
 		<input type="submit" value="Get Tag Feed" />
 	</div>
 </form>
-
-<footer>
-
-</footer>
-
 </body>
 </html>
 
