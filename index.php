@@ -118,6 +118,23 @@ function escape(&$var) {
 escape($repo["name"]);
 escape($repo["description"]);
 escape($username);
+//got and modified from http://stackoverflow.com/questions/2699086/sort-multidimensional-array-by-value-2
+function feed_sort (&$array, $key) {
+    $sorter=array();
+    $ret=array();
+    reset($array);
+    foreach ($array as $ii => $va) {
+        $sorter[$ii]=str_replace("v","",$va[$key]);
+    }
+    arsort($sorter);
+    foreach ($sorter as $ii => $va) {
+        $ret[$ii]=$array[$ii];
+    }
+    $array=$ret;
+}
+//Sort tags array
+$orderedTags = $tag_refs ;
+feed_sort($orderedTags,'name');
 
 header("Content-Type: application/xml;"); ?>
  <rss version="2.0"
@@ -131,7 +148,7 @@ header("Content-Type: application/xml;"); ?>
 		<docs>http://blogs.law.harvard.edu/tech/rss</docs>
 		<pubDate><?php echo date("r", strtotime($repo["pushed_at"])) ?></pubDate>
 		<lastBuildDate><?php echo date("r", strtotime($repo["updated_at"])) ?></lastBuildDate>
-		<?php foreach($tag_refs as $tag): ?>
+		<?php foreach($orderedTags as $tag): ?>
         <item>
             <guid isPermaLink="false"><?php echo $tag["commit"]["sha"] ?></guid>
 			<title><?php echo $tag["name"] ?></title>
